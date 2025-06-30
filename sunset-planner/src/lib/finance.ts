@@ -8,6 +8,31 @@ export interface NPVResult {
   years: number[]
 }
 
+export interface Derived {
+  mortgagePayment: number
+  grossRent: number
+  netRent: number
+}
+
+export function calcDerived(state: State): Derived {
+  const { property, rental } = state
+
+  const monthlyRate = property.rate / 12
+  const n = property.term * 12
+  const mortgagePayment =
+    (property.mortgageBalance * monthlyRate) /
+    (1 - Math.pow(1 + monthlyRate, -n))
+
+  const grossRent = rental.nightly * 365 * rental.occupancy
+  const netRent =
+    grossRent -
+    grossRent * rental.feePct -
+    rental.cleaning -
+    grossRent * rental.mgmtPct
+
+  return { mortgagePayment, grossRent, netRent }
+}
+
 // Simplified NPV calculation for demonstration
 export function calcNPV(inputs: State): NPVResult {
   const { property, rental, operating, sale, tax, settings } = inputs
