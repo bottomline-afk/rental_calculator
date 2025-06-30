@@ -20,11 +20,28 @@ function App() {
           <button className={tab === 'hold' ? 'font-bold' : ''} onClick={() => setTab('hold')}>Hold & Rent</button>
           <button className={tab === 'sell' ? 'font-bold' : ''} onClick={() => setTab('sell')}>Sell</button>
         </div>
-        <PropertyForm />
-        {tab === 'hold' && <RentalForm />}
-        <OperatingForm />
-        <TaxForm />
-        <SaleForm />
+        <section className="p-4 border rounded space-y-2">
+          <h2 className="font-bold">Property</h2>
+          <PropertyForm />
+        </section>
+        {tab === 'hold' && (
+          <section className="p-4 border rounded space-y-2">
+            <h2 className="font-bold">Rental</h2>
+            <RentalForm />
+          </section>
+        )}
+        <section className="p-4 border rounded space-y-2">
+          <h2 className="font-bold">Operating</h2>
+          <OperatingForm />
+        </section>
+        <section className="p-4 border rounded space-y-2">
+          <h2 className="font-bold">Tax</h2>
+          <TaxForm />
+        </section>
+        <section className="p-4 border rounded space-y-2">
+          <h2 className="font-bold">Sale</h2>
+          <SaleForm />
+        </section>
       </div>
       <div className="space-y-4">
         <ResultsCard />

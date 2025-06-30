@@ -7,6 +7,7 @@ export function CashFlowChart() {
   const canvasRef = useRef<HTMLCanvasElement>(null)
   const state = usePlannerStore()
   const result = calcNPV(state)
+  const sellCF = [result.pvSell, ...Array(result.cf.length - 1).fill(0)]
 
   useEffect(() => {
     if (!canvasRef.current) return
@@ -15,7 +16,8 @@ export function CashFlowChart() {
       data: {
         labels: result.years,
         datasets: [
-          { label: 'Cash Flow', data: result.cf, backgroundColor: 'rgba(99,102,241,0.5)' },
+          { label: 'Hold & Rent', data: result.cf, backgroundColor: 'rgba(99,102,241,0.5)' },
+          { label: 'Sell Now', data: sellCF, backgroundColor: 'rgba(239,68,68,0.5)' },
         ],
       },
     })
