@@ -24,13 +24,34 @@ export function PropertyForm() {
 
   return (
     <form onBlur={handleSubmit(onSubmit)} className="space-y-2">
-      <input className="input" placeholder="Address" {...register('address')} />
-      <input type="number" className="input" placeholder="Purchase Price" {...register('purchasePrice', { valueAsNumber: true })} />
-      <input type="date" className="input" {...register('purchaseDate')} />
-      <input type="number" className="input" placeholder="Market Value" {...register('marketValue', { valueAsNumber: true })} />
-      <input type="number" className="input" placeholder="Mortgage Balance" {...register('mortgageBalance', { valueAsNumber: true })} />
-      <input type="number" step="0.01" className="input" placeholder="Rate" {...register('rate', { valueAsNumber: true })} />
-      <input type="number" className="input" placeholder="Term" {...register('term', { valueAsNumber: true })} />
+      <label className="block">
+        <span className="label">Address</span>
+        <input className="input" {...register('address')} />
+      </label>
+      <label className="block">
+        <span className="label">Purchase Price</span>
+        <input type="number" className="input" {...register('purchasePrice', { valueAsNumber: true })} />
+      </label>
+      <label className="block">
+        <span className="label">Purchase Date</span>
+        <input type="date" className="input" {...register('purchaseDate')} />
+      </label>
+      <label className="block">
+        <span className="label">Market Value</span>
+        <input type="number" className="input" {...register('marketValue', { valueAsNumber: true })} />
+      </label>
+      <label className="block">
+        <span className="label">Mortgage Balance</span>
+        <input type="number" className="input" {...register('mortgageBalance', { valueAsNumber: true })} />
+      </label>
+      <label className="block">
+        <span className="label">Rate</span>
+        <input type="number" step="0.01" className="input" {...register('rate', { valueAsNumber: true })} />
+      </label>
+      <label className="block">
+        <span className="label">Term (yrs)</span>
+        <input type="number" className="input" {...register('term', { valueAsNumber: true })} />
+      </label>
     </form>
   )
 }
