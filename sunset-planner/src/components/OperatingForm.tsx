@@ -22,11 +22,26 @@ export function OperatingForm() {
 
   return (
     <form onBlur={handleSubmit(onSubmit)} className="space-y-2">
-      <input type="number" className="input" placeholder="Property Tax" {...register('propTax', { valueAsNumber: true })} />
-      <input type="number" step="0.01" className="input" placeholder="Tax Growth" {...register('taxGrowth', { valueAsNumber: true })} />
-      <input type="number" className="input" placeholder="Insurance" {...register('insurance', { valueAsNumber: true })} />
-      <input type="number" step="0.01" className="input" placeholder="Ins Growth" {...register('insGrowth', { valueAsNumber: true })} />
-      <input type="number" step="0.01" className="input" placeholder="Maintenance %" {...register('maintenancePct', { valueAsNumber: true })} />
+      <label className="block">
+        <span className="label">Property Tax</span>
+        <input type="number" className="input" {...register('propTax', { valueAsNumber: true })} />
+      </label>
+      <label className="block">
+        <span className="label">Tax Growth</span>
+        <input type="number" step="0.01" className="input" {...register('taxGrowth', { valueAsNumber: true })} />
+      </label>
+      <label className="block">
+        <span className="label">Insurance</span>
+        <input type="number" className="input" {...register('insurance', { valueAsNumber: true })} />
+      </label>
+      <label className="block">
+        <span className="label">Ins Growth</span>
+        <input type="number" step="0.01" className="input" {...register('insGrowth', { valueAsNumber: true })} />
+      </label>
+      <label className="block">
+        <span className="label">Maintenance %</span>
+        <input type="number" step="0.01" className="input" {...register('maintenancePct', { valueAsNumber: true })} />
+      </label>
     </form>
   )
 }

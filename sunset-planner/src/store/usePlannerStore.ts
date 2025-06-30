@@ -46,6 +46,7 @@ export interface Sale {
   yearsAhead: number
   sellCostPct: number
   appreciation: number
+  homeSaleExclusion: boolean
 }
 
 export interface Settings {
@@ -100,6 +101,7 @@ const defaultState: State = {
     yearsAhead: 20,
     sellCostPct: 0.06,
     appreciation: 0.03,
+    homeSaleExclusion: true,
   },
   settings: {
     discount: 0.05,
@@ -114,7 +116,7 @@ export const usePlannerStore = create<PlannerStore>()(
   persist(
     (set) => ({
       ...defaultState,
-      update: (partial) => set(partial as any),
+      update: (partial) => set(partial),
     }),
     { name: 'sunset-planner' }
   )

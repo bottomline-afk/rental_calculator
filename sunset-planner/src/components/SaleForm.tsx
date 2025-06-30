@@ -7,6 +7,7 @@ const schema = z.object({
   yearsAhead: z.number(),
   sellCostPct: z.number(),
   appreciation: z.number(),
+  homeSaleExclusion: z.boolean(),
 })
 
 export function SaleForm() {
@@ -19,9 +20,22 @@ export function SaleForm() {
 
   return (
     <form onBlur={handleSubmit(onSubmit)} className="space-y-2">
-      <input type="number" className="input" placeholder="Years Ahead" {...register('yearsAhead', { valueAsNumber: true })} />
-      <input type="number" step="0.01" className="input" placeholder="Sell Cost %" {...register('sellCostPct', { valueAsNumber: true })} />
-      <input type="number" step="0.01" className="input" placeholder="Appreciation" {...register('appreciation', { valueAsNumber: true })} />
+      <label className="block">
+        <span className="label">Years Ahead</span>
+        <input type="number" className="input" {...register('yearsAhead', { valueAsNumber: true })} />
+      </label>
+      <label className="block">
+        <span className="label">Sell Cost %</span>
+        <input type="number" step="0.01" className="input" {...register('sellCostPct', { valueAsNumber: true })} />
+      </label>
+      <label className="block">
+        <span className="label">Appreciation</span>
+        <input type="number" step="0.01" className="input" {...register('appreciation', { valueAsNumber: true })} />
+      </label>
+      <label className="flex items-center gap-2">
+        <input type="checkbox" className="" {...register('homeSaleExclusion')} />
+        <span className="label m-0">$500k Home Sale Exclusion</span>
+      </label>
     </form>
   )
 }

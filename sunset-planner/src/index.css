@@ -4,3 +4,4 @@
 
 /* custom global styles if needed */
 .input{ @apply border p-1 rounded w-full; }
+.label{ @apply block text-sm font-medium text-gray-700 mb-1; }
